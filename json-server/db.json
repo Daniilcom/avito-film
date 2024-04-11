@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123",
+      "jsonSettings": {
+        "isArticlesPageWasOpened": true,
+        "theme": "app_orange_theme"
+      }
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
