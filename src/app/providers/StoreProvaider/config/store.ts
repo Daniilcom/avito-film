@@ -2,18 +2,20 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
 import { movieReducer } from 'entities/Movie/model/slice/movieSlice'
 import { userReducer } from 'entities/User'
 import { loginReducer } from 'features/AuthByUsername'
-import { NavigateOptions, To } from 'react-router-dom'
+import { scrollSaveReducer } from 'features/ScrollSave'
+import { searchHistoryReducer } from 'features/SearchHistory'
+import { moviesPageReducer } from 'pages/MoviesPage/model/slice/moviesPageSlice'
 import { movieApi, authApi } from 'shared/api/api'
 import { StateSchema } from './StateSchema'
 
-export function createReduxStore(
-  navigate?: (to: To, options?: NavigateOptions) => void,
-  initialState?: StateSchema
-) {
+export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     movie: movieReducer,
+    moviesPage: moviesPageReducer,
     user: userReducer,
     loginForm: loginReducer,
+    scrollSave: scrollSaveReducer,
+    searchHistory: searchHistoryReducer,
   }
 
   return configureStore<StateSchema>({
@@ -24,9 +26,8 @@ export function createReduxStore(
       getDefaultMiddleware({
         thunk: {
           extraArgument: {
-            movieApi: movieApi,
-            authApi: authApi,
-            navigate,
+            movieApi,
+            authApi,
           },
         },
       }),

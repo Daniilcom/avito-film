@@ -1,8 +1,10 @@
 import { Movie } from 'entities/Movie'
-import { memo } from 'react'
-import { useParams } from 'react-router-dom'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { memo, useCallback } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Text } from 'shared/ui/Text/Text'
+import { classNames } from 'shared/lib/classNames/classNames'
+import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Page } from 'widgetes/Page/Page'
 import cls from './MoviePage.module.scss'
 
 interface MoviePageProps {
@@ -12,6 +14,11 @@ interface MoviePageProps {
 const MoviePage = (props: MoviePageProps) => {
   const { className } = props
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+
+  const onBackToList = useCallback(() => {
+    navigate('/')
+  }, [navigate])
 
   if (!id) {
     return (
@@ -21,9 +28,12 @@ const MoviePage = (props: MoviePageProps) => {
     )
   }
   return (
-    <div className={classNames(cls.MoviePage, {}, [className])}>
+    <Page className={classNames(cls.MoviePage, {}, [className])}>
+      <Button theme={ButtonTheme.CLEAR} onClick={onBackToList}>
+        <Text text="Назад к списку" />
+      </Button>
       <Movie id={id} />
-    </div>
+    </Page>
   )
 }
 

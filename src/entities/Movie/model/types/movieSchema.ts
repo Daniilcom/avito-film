@@ -1,4 +1,4 @@
-import { MovieType } from './movie'
+import { MovieType } from './movie';
 
 export interface MovieSchema {
   isLoading: boolean

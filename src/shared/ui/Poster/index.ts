@@ -1,1 +1,1 @@
-export * from './Poster'
+export * from './Poster';

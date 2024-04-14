@@ -1,13 +1,3 @@
-// export enum MoviBlockType {
-//   NAME = 'NAME',
-//   POSTER = 'POSTER',
-//   DESCRIPTION = 'DESCRIPTION',
-//   RATING = 'RATING',
-//   PERSONS = 'PERSONS',
-//   SEASONS = 'SEASONS',
-//   REVIEW = 'REVIEW',
-// }
-
 interface MovieRating {
   kp: number
   imdb: number
@@ -22,6 +12,13 @@ interface MoviePoster {
   previewUrl: string
 }
 
+interface MovieSimilar {
+  id: number
+  name: string
+  poster: MoviePoster
+  rating: MovieRating
+  year?: number | undefined
+}
 interface MoviePerson {
   id: number
   name: string
@@ -47,10 +44,18 @@ interface MovieSequelsAndPrequels {
   year: number
 }
 
-interface MovieReviewInfo {
-  count: number
-  positiveCount: number
-  percentage: string
+interface MovieReview {
+  id: number
+  movieId: number
+  title: string
+  type: string
+  review: string
+  date: string
+  author: string
+  userRating: number
+  authorId: number
+  updatedAt: string
+  createdAt: string
 }
 
 interface MovieCountry {
@@ -62,16 +67,17 @@ export interface MovieType {
   name: string
   type: string
   alternativeName: string
-  year: number
+  year?: number | undefined
   description: string
   rating: MovieRating
   poster: MoviePoster
   persons: MoviePerson[]
   sequelsAndPrequels: MovieSequelsAndPrequels[]
   seasonsInfo?: MovieSeasonInfo[]
-  reviewInfo?: MovieReviewInfo
+  review?: MovieReview[]
   countries: MovieCountry[]
   ageRating: number
   movieLength: string
-  slogan: string
+  slogan: string | null
+  similarMovies: MovieSimilar[]
 }

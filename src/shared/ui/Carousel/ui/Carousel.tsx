@@ -1,5 +1,5 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react'
-import { debounce } from 'shared/lib/debounce/debounce'
+import { memo, useEffect, useRef, useState, useCallback } from 'react'
+import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce' // Убедитесь, что правильно указали путь
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Carousel.module.scss'
 
@@ -15,36 +15,36 @@ export const Carousel = memo(
     const containerRef = useRef<HTMLDivElement | null>(null)
     const [activeSlide, setActiveSlide] = useState(0)
 
-    useEffect(() => {
-      const handleScroll = debounce(() => {
-        if (containerRef.current && rootRef.current) {
-          const scrollLeft = containerRef.current.scrollLeft
-          const clientWidth = rootRef.current.clientWidth
-          const maxScrollLeft = containerRef.current.scrollWidth - clientWidth
+    const handleScroll = useDebounce(() => {
+      if (containerRef.current && rootRef.current) {
+        const { scrollLeft } = containerRef.current
+        const { clientWidth } = rootRef.current
+        const maxScrollLeft = containerRef.current.scrollWidth - clientWidth
 
-          const lastIndex = Math.ceil(slides.length / slidesPerPage) - 1
+        const lastIndex = Math.ceil(slides.length / slidesPerPage) - 1
 
-          let newIndex
-          if (scrollLeft >= maxScrollLeft) {
-            newIndex = lastIndex
-          } else {
-            newIndex = Math.floor((scrollLeft + clientWidth / 2) / clientWidth)
-          }
-
-          setActiveSlide(newIndex)
+        let newIndex
+        if (scrollLeft >= maxScrollLeft) {
+          newIndex = lastIndex
+        } else {
+          newIndex = Math.floor((scrollLeft + clientWidth / 2) / clientWidth)
         }
-      }, 100)
 
+        setActiveSlide(newIndex)
+      }
+    }, 100)
+
+    useEffect(() => {
       containerRef.current?.addEventListener('scroll', handleScroll)
 
       return () => {
         containerRef.current?.removeEventListener('scroll', handleScroll)
       }
-    }, [slidesPerPage, slides.length])
+    }, [handleScroll])
 
     const goToSlide = useCallback((index: number) => {
       if (containerRef.current && rootRef.current) {
-        const clientWidth = rootRef.current.clientWidth
+        const { clientWidth } = rootRef.current
         containerRef.current.scrollTo({
           left: clientWidth * index,
           behavior: 'smooth',

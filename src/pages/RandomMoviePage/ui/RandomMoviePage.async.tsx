@@ -1,3 +1,3 @@
-import { lazy } from 'react'
+import { lazy } from 'react';
 
-export const RandomMoviePageAsync = lazy(() => import('./RandomMoviePage'))
+export const RandomMoviePageAsync = lazy(() => import('./RandomMoviePage'));
