@@ -9,6 +9,8 @@ import { fetchNextMoviesPage } from '../model/service/fetchNextMoviesPage/fetchN
 import { initMoviesPage } from '../model/service/initMoviesPage/initMoviesPage'
 import { getMovies } from '../model/slice/moviesPageSlice'
 import { MoviesPageFilter } from './MoviesPageFilter/MoviesPageFilter'
+import { ConditionalRender } from 'shared/ui/ConditionalRender/ui/ConditionalRender'
+import { Placeholder } from 'shared/ui/Placeholder/Placeholder'
 
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './MoviesPage.module.scss'
@@ -37,7 +39,12 @@ const MoviesPage = ({ className }: MoviesPageProps) => {
       className={classNames(cls.MoviesPage, {}, [className])}
     >
       <MoviesPageFilter />
-      <MovieList isLoading={isLoading} movies={movies} className={cls.list} />
+      <ConditionalRender
+        data={movies}
+        Placeholder={<Placeholder text="Ничего не найдено" />}
+      >
+        <MovieList isLoading={isLoading} movies={movies} className={cls.list} />
+      </ConditionalRender>
     </Page>
   )
 }

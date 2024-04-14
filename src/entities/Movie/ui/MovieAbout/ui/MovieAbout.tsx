@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
-import { Poster } from 'shared/ui/Poster'
+import { Poster } from 'shared/ui/Poster/Poster'
 import { Text, TextSize } from 'shared/ui/Text/Text'
 import { ConditionalRender } from 'shared/ui/ConditionalRender/ui/ConditionalRender'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { Placeholder } from 'shared/ui/Placeholder/ui/Placeholder'
+import { Placeholder } from 'shared/ui/Placeholder/Placeholder'
 import cls from './MovieAbout.module.scss'
 import { getMovieData } from '../../../model/selectors/movie'
 

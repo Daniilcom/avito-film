@@ -1,4 +1,4 @@
-import { Carousel } from 'shared/ui/Carousel'
+import { Carousel } from 'shared/ui/Carousel/Carousel'
 import { Text } from 'shared/ui/Text/Text'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { MovieItem } from '../../MovieItem'

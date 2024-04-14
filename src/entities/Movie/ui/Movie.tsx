@@ -4,7 +4,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Text, TextSize } from 'shared/ui/Text/Text'
 import { ConditionalRender } from 'shared/ui/ConditionalRender/ui/ConditionalRender'
-import { Placeholder } from 'shared/ui/Placeholder/ui/Placeholder'
+import { Placeholder } from 'shared/ui/Placeholder/Placeholder'
 import {
   getMovieData,
   getMovieError,

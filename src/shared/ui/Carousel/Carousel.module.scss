@@ -20,7 +20,7 @@ $carousel-bottom-padding: 20px;
   min-height: calc($carousel-height + $carousel-bottom-padding);
   padding-bottom: $carousel-bottom-padding;
   display: flex;
-  gap: 15px;
+  gap: 30px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   overflow-y: hidden;

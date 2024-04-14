@@ -1,20 +1,22 @@
 .card {
-  width: 240px;
-  height: 350px;
+  width: 18vw;
+  height: 27vw;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
 
 .img {
   width: 100%;
   object-fit: cover;
-  min-height: 140px;
-  max-height: 140px;
+  min-height: 20vw;
+  max-width: 18vw;
+  box-sizing: border-box;
+  border-radius: 10px 10px 0 0;
 }
 
 .info {
-  padding: 8px 8px 16px 8px;
+  padding: 5px 5px 5px 5px;
   height: 100%;
 }

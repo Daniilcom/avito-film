@@ -171,7 +171,6 @@ const countrysArr = [
   'Пуэрто Рико',
   'Реюньон',
   'Российская империя',
-  'Россия',
   'Руанда',
   'Румыния',
   'Сальвадор',
@@ -195,10 +194,8 @@ const countrysArr = [
   'Словения',
   'Соломоновы Острова',
   'Сомали',
-  'СССР',
   'Судан',
   'Суринам',
-  'США',
   'Сьерра-Леоне',
   'Таджикистан',
   'Таиланд',
@@ -256,7 +253,7 @@ const agesArr = [0, 6, 12, 16, 18]
 export const keyAge = agesArr.map((i) => ({ value: `${i}`, content: `${i}+` }))
 
 const yearsArr = []
-for (let year = 1890; year <= 2024; year++) {
+for (let year = 2024; year >= 1890; year--) {
   yearsArr.push(`${year}`)
 }
 

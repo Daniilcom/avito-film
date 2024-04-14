@@ -1,7 +1,7 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react'
-import { Text } from 'shared/ui/Text/Text'
-import { Card } from 'shared/ui/Card'
-import { AppImage } from 'shared/ui/AppImage'
+import { Text, TextSize } from 'shared/ui/Text/Text'
+import { Card } from 'shared/ui/Card/Card'
+import { AppImage } from 'shared/ui/AppImage/AppImage'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { MovieType } from 'entities/Movie/model/types/movie'
@@ -31,10 +31,12 @@ export const MovieItem = memo((props: MovieItemProps) => {
         src={isPerson ? photo : poster}
         className={cls.img}
       />
-      <Text title={name} className={cls.name} />
-      {isMovie && year !== 'undefined' && (
-        <Text text={`${year} `} className={cls.date} />
-      )}
+      <div className={cls.name}>
+        <Text title={name} size={TextSize.S} />
+        {isMovie && year !== 'undefined' && (
+          <Text text={`${year} `} className={cls.date} />
+        )}
+      </div>
     </Card>
   )
 
