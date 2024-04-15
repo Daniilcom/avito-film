@@ -2,7 +2,8 @@ import HTMLWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BuildOptions } from './types/config'
-const Dotenv = require('dotenv-webpack')
+import dotenv from 'dotenv'
+dotenv.config()
 
 export function buildPlugins({
   paths,
@@ -19,8 +20,8 @@ export function buildPlugins({
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+      'process.env.API_TOKEN': JSON.stringify(process.env.API_TOKEN), // Преобразование в строку обязательно
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv({ path: '../../.env', systemvars: true }),
   ]
 }

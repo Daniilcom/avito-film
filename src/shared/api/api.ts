@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
 
-const apiToken = process.env.TOKEN
+const apiToken = process.env.API_TOKEN
 
 export const authApi = axios.create({
   baseURL: 'http://localhost:8000/login',
@@ -14,6 +14,6 @@ export const movieApi = axios.create({
   baseURL: 'https://api.kinopoisk.dev/v1.4',
   headers: {
     accept: 'application/json',
-    'X-API-KEY': 'WF76VQQ-HQB4P5G-JFJH8DF-CRKDP1M',
+    'X-API-KEY': `${apiToken}`,
   },
 })
